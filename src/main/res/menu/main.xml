@@ -3,5 +3,6 @@
     tools:context="com.tadeaskriz.devconf2014.MainActivity" >
     
     <item android:id="@+id/action_add"
-        android:title="ADD" />
+        android:title="ADD"
+        android:showAsAction="always" />
 </menu>
