@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -22,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/itemsWaiting"/>
+                android:id="@+id/unfinishedTasks">
+        </LinearLayout>
 
         <TextView
                 android:layout_width="match_parent"
@@ -30,10 +32,11 @@
                 android:text="THINGS I'VE DONE"/>
 
         <LinearLayout
-                android:id="@+id/itemsDone"
+                android:id="@+id/finishedTasks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

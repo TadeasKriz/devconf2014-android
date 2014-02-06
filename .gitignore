@@ -1,6 +1,7 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-.DS_Store
+/build
 .idea/
+gen-external-apklibs/
+out/
+target/
+atlassian-ide-plugin.xml
 *.iml
