@@ -1,41 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.tadeaskriz.devconf2014.MainActivity"
-        tools:ignore="MergeRootFrame">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tadeaskriz.devconf2014.MainActivity"
+    tools:ignore="MergeRootFrame"
+    android:background="#d2f0f6">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="16dp">
 
         <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="THINGS TO DO"/>
+            android:id="@+id/unfinishedTasksTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="THINGS TO DO"
+            android:textColor="#2e7583"
+            android:textSize="18sp"/>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/unfinishedTasks">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/unfinishedTasks">
         </LinearLayout>
 
         <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="THINGS I'VE DONE"/>
+            android:id="@+id/finishedTasksTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="THINGS I'VE DONE"
+            android:textColor="#2e7583"
+            android:textSize="18sp"/>
 
         <LinearLayout
-                android:id="@+id/finishedTasks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            android:id="@+id/finishedTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>
 

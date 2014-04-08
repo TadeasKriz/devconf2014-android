@@ -42,6 +42,12 @@ public class MainActivity extends Activity implements MessageHandler {
     @ViewById
     LinearLayout finishedTasks;
 
+    @ViewById
+    TextView unfinishedTasksTitle;
+
+    @ViewById
+    TextView finishedTasksTitle;
+
     @App
     BaseApplication application;
 
@@ -135,6 +141,9 @@ public class MainActivity extends Activity implements MessageHandler {
 
             targetLayout.addView(taskItem);
         }
+
+        unfinishedTasksTitle.setVisibility(unfinishedTasks.getChildCount() == 0 ? View.GONE : View.VISIBLE);
+        finishedTasksTitle.setVisibility(finishedTasks.getChildCount() == 0 ? View.GONE : View.VISIBLE);
     }
 
     @OptionsItem(R.id.action_add)
