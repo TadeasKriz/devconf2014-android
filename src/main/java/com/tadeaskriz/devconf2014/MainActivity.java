@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -33,8 +34,10 @@ import java.util.List;
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.main)
 public class MainActivity extends Activity implements MessageHandler {
-
+    private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_ADD = 1;
+
+    private short retries = 10;
 
     @ViewById
     LinearLayout unfinishedTasks;
@@ -57,15 +60,7 @@ public class MainActivity extends Activity implements MessageHandler {
 
     @AfterViews
     void init() {
-        application.getRegistrar().register(getApplicationContext(), new Callback<Void>() {
-            @Override
-            public void onSuccess(Void data) { }
-
-            @Override
-            public void onFailure(Exception e) {
-                failure(e);
-            }
-        });
+        registerPush();
 
         URL url;
         try {
@@ -94,6 +89,26 @@ public class MainActivity extends Activity implements MessageHandler {
             @Override
             public void onFailure(Exception e) {
                 failure(e);
+            }
+        });
+    }
+
+    @UiThread
+    void registerPush() {
+        application.getRegistrar().register(getApplicationContext(), new Callback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                Log.d(TAG, "Successfully registered for push notifications.");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.w(TAG, "Registration for push notifications failed!", e);
+                if(retries == 0) {
+                    throw new RuntimeException(e);
+                }
+                retries--;
+                registerPush();
             }
         });
     }
