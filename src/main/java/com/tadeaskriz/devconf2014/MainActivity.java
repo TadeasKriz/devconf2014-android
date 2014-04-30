@@ -104,7 +104,7 @@ public class MainActivity extends Activity implements MessageHandler {
             @Override
             public void onFailure(Exception e) {
                 Log.w(TAG, "Registration for push notifications failed!", e);
-                if(retries == 0) {
+                if (retries == 0) {
                     throw new RuntimeException(e);
                 }
                 retries--;
@@ -128,10 +128,14 @@ public class MainActivity extends Activity implements MessageHandler {
             } else {
                 targetLayout = unfinishedTasks;
             }
+
             final View taskItem = inflater.inflate(R.layout.task_item, targetLayout, false);
             if (taskItem == null) {
+                Log.e(TAG, "Could not inflate task item xml!");
                 continue;
             }
+
+            taskItem.setContentDescription("item-" + targetLayout.getChildCount());
             CheckBox done = (CheckBox) taskItem.findViewById(R.id.done);
             TextView text = (TextView) taskItem.findViewById(R.id.text);
 
