@@ -142,7 +142,8 @@ public class MainActivity extends Activity implements MessageHandler {
                     EditTaskActivity_.intent(MainActivity.this).task(task).startForResult(REQUEST_EDIT);
                 }
             });
-            taskItem.setContentDescription("item-" + targetLayout.getChildCount());
+            String prefix = targetLayout == finishedTasks ? "finished" : "unfinished";
+            taskItem.setContentDescription(prefix + "-item-" + targetLayout.getChildCount());
             CheckBox done = (CheckBox) taskItem.findViewById(R.id.done);
             TextView text = (TextView) taskItem.findViewById(R.id.text);
 
