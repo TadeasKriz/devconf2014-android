@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d2f0f6"
+    android:paddingLeft="9dp"
+    android:paddingRight="9dp"
+    android:paddingTop="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT TASK"
+        android:textColor="#2e7583"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="3"
+        android:gravity="top"
+        android:textSize="18sp"
+        android:textColor="#2e2c2c"
+        android:paddingLeft="11dp"
+        android:paddingTop="20dp"
+        android:paddingRight="11dp"
+        android:paddingBottom="20dp"
+        android:background="@drawable/edit_text_background"/>
+
+    <Button
+        android:layout_marginTop="12dp"
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:textColor="@android:color/white"
+        android:background="@drawable/add_task_button_background"/>
+
+</LinearLayout>

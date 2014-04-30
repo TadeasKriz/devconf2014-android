@@ -37,7 +37,7 @@
         </activity>
 
         <activity android:name=".AddTaskActivity_"/>
-
+        <activity android:name=".EditTaskActivity_"/>
         <receiver
             android:name="org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">

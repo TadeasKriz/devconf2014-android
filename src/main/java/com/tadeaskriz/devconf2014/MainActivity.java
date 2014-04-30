@@ -36,6 +36,7 @@ import java.util.List;
 public class MainActivity extends Activity implements MessageHandler {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_ADD = 1;
+    private static final int REQUEST_EDIT = REQUEST_ADD + 1;
 
     private short retries = 10;
 
@@ -135,6 +136,12 @@ public class MainActivity extends Activity implements MessageHandler {
                 continue;
             }
 
+            taskItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EditTaskActivity_.intent(MainActivity.this).task(task).startForResult(REQUEST_EDIT);
+                }
+            });
             taskItem.setContentDescription("item-" + targetLayout.getChildCount());
             CheckBox done = (CheckBox) taskItem.findViewById(R.id.done);
             TextView text = (TextView) taskItem.findViewById(R.id.text);
@@ -173,7 +180,7 @@ public class MainActivity extends Activity implements MessageHandler {
     @OnActivityResult(REQUEST_ADD)
     void onAddNewTaskResult(int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            String text = data.getStringExtra("text");
+            String text = data.getStringExtra(AddTaskActivity.RESULT_BUNDLE_TEXT);
 
             Task task = new Task();
             task.setText(text);
@@ -185,6 +192,35 @@ public class MainActivity extends Activity implements MessageHandler {
 
                 @Override
                 public void onFailure(Exception e) {
+                }
+            });
+        }
+    }
+
+    @OnActivityResult(REQUEST_EDIT)
+    void onEditTaskResult(int resultCode, Intent data) {
+        if (resultCode == EditTaskActivity.RESULT_SAVE) {
+            Task task = data.getParcelableExtra(EditTaskActivity.RESULT_BUNDLE_TASK);
+            tasksPipe.save(task, new Callback<Task>() {
+                @Override
+                public void onSuccess(Task data) {
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    failure(e);
+                }
+            });
+        } else if (resultCode == EditTaskActivity.RESULT_DELETE) {
+            Task task = data.getParcelableExtra(EditTaskActivity.RESULT_BUNDLE_TASK);
+            tasksPipe.remove(String.valueOf(task.getId()), new Callback<Void>() {
+                @Override
+                public void onSuccess(Void data) {
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    failure(e);
                 }
             });
         }

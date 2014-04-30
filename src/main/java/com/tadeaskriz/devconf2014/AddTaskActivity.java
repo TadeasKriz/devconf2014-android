@@ -16,6 +16,7 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.activity_addtask)
 public class AddTaskActivity extends Activity {
 
+    public static final String RESULT_BUNDLE_TEXT = "text";
 
     @ViewById
     EditText text;
@@ -26,7 +27,7 @@ public class AddTaskActivity extends Activity {
     @Click(R.id.add)
     void addItem() {
         Intent data = new Intent();
-        data.putExtra("text", text.getText().toString());
+        data.putExtra(RESULT_BUNDLE_TEXT, text.getText().toString());
         setResult(RESULT_OK, data);
         finish();
     }
